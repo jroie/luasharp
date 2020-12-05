@@ -18,15 +18,7 @@ fenv.import = function(module,pool2,var)
 	if pool2 == nil then
 		error("LUA# ERROR: pool not mentioned. TIP: mention the variable THEN the pool.")
 	end
-	table.insert(modules,1,pool2)
-	pool2[module] = var
-	
-end
-fenv.export = function(module,pool2,var)
-	if typeof(pool2) == "string"  then
-		error("LUA# ERROR: String received, expected module. TIP: When mentioning a table, dont use quotation marks.")
-	end
-	table.insert(pool2,1,module)
+	table.insert(module,1,pool2)
 	pool2[module] = var
 	
 end
