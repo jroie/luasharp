@@ -1,0 +1,32 @@
+-- LUA#
+-- yes
+fenv = getfenv()
+--// start var turning
+fenv.getmodule = require
+fenv.lab = game
+fenv.map = workspace
+fenv.gui = lab.StarterGui
+fenv.debris = lab:GetService("Debris")
+fenv.printin = print
+--// end var turning
+
+--// start functions
+fenv.init = function(variable,var1)
+	fenv.variable = var1
+end
+fenv.import = function(module,pool2,var)
+	if pool2 == nil then
+		error("LUA# ERROR: pool not mentioned. TIP: mention the variable THEN the pool.")
+	end
+	table.insert(modules,1,pool2)
+	pool2[module] = var
+	
+end
+fenv.export = function(module,pool2,var)
+	if typeof(pool2) == "string"  then
+		error("LUA# ERROR: String received, expected module. TIP: When mentioning a table, dont use quotation marks.")
+	end
+	table.insert(pool2,1,module)
+	pool2[module] = var
+	
+end
